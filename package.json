@@ -1,0 +1,22 @@
+{
+  "name": "v-anime",
+  "version": "1.0.0",
+  "description": "Vue composeable to simplify usage of animeJS package.",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "(https://github.com/Upperstrange/v-anime.git)"
+  },
+  "keywords": [
+    "vue",
+    "anime"
+  ],
+  "author": "Upperstrange",
+  "license": "ISC",
+  "dependencies": {
+
+  }
+}
