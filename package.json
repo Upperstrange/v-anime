@@ -1,6 +1,6 @@
 {
   "name": "v-anime",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Vue composable to simplify usage of animeJS package.",
   "main": "index.ts",
   "scripts": {
