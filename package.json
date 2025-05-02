@@ -1,7 +1,7 @@
 {
   "name": "v-anime",
-  "version": "1.0.0",
-  "description": "Vue composeable to simplify usage of animeJS package.",
+  "version": "1.0.1",
+  "description": "Vue composable to simplify usage of animeJS package.",
   "main": "index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -16,7 +16,5 @@
   ],
   "author": "Upperstrange",
   "license": "ISC",
-  "dependencies": {
-
-  }
+  "dependencies": {}
 }
