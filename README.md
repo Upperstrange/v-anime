@@ -1,6 +1,6 @@
 # Using Anime.js and v-anime in Vue/Nuxt.js
 
-This document explains how to integrate the `animejs` library for animations and the `v-anime` wrapper for easier management within a Vue.js or Nuxt.js application, based on the example provided in `animate.vue` (Nuxt 3 page).
+This document explains how to integrate the `animejs` library for animations and the `v-anime` wrapper for easier management within a Vue.js or Nuxt.js application. We will consider **usage in Nuxt 3** for the example.
 
 ## 1. Installation
 
@@ -17,7 +17,6 @@ yarn add animejs v-anime
 In your Vue component (`<script setup lang="ts">` section), import the required functions:
 
 ```typescript
-import { ref } from 'vue';
 import { animate, createSpring, createDraggable } from 'animejs';
 import { useAnime, useAnimeController } from 'v-anime';
 
@@ -33,7 +32,7 @@ const antiClockwise = ref(0);
 -   `animate`, `createSpring`, `createDraggable`: Core functions from `animejs` for creating animations.
 -   `useAnime`, `useAnimeController`: Composables from `v-anime` to manage animations.
 -   `root`: A `ref` attached to the main container element in your template. This is often required by `v-anime`.
--   `scope`: An optional `ref` for more granular control over animation targets (not strictly necessary in this example but good practice).
+-   `scope`: A `ref` for scoping animations to specific elements within the `root` container.
 
 ## 3. Automatic Animations (`useAnime`)
 
@@ -62,7 +61,7 @@ const dragableLogo = () => {
 // Register the automatic animations with useAnime
 useAnime({
     root: root, // Pass the root element ref
-    scope: scope, // Pass the scope ref (optional)
+    scope: scope, // Pass the scope ref
     animeFunctions: [heartbeatLogo, dragableLogo] // Array of functions to run on mount
   })
 ```
@@ -163,4 +162,3 @@ In your `<template>`, attach the `root` ref to the main container and ensure you
 ## Conclusion
 
 `animejs` provides powerful animation capabilities, while `v-anime` offers convenient composables (`useAnime`, `useAnimeController`) to integrate and manage these animations declaratively within Vue/Nuxt.js components, separating automatic and controlled animation logic effectively.
-```
