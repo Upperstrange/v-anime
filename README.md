@@ -1,6 +1,6 @@
 # Using Anime.js and v-anime in Vue/Nuxt.js
 
-This document explains how to integrate the `animejs` library for animations and the `v-anime` wrapper for easier management within a Vue.js or Nuxt.js application, based on the example provided in `animate.vue`.
+This document explains how to integrate the `animejs` library for animations and the `v-anime` wrapper for easier management within a Vue.js or Nuxt.js application, based on the example provided in `animate.vue` (Nuxt 3 page).
 
 ## 1. Installation
 
