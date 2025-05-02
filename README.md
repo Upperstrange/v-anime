@@ -22,7 +22,7 @@ import { useAnime, useAnimeController } from 'v-anime';
 
 // Refs for the root element and animation scope
 const root = ref(null);
-const scope = ref(null); // Optional: for scoping animations if needed
+const scope = ref(null); 
 
 // Example state variables (if needed for controlled animations)
 const clockwise = ref(0);
@@ -41,20 +41,20 @@ const antiClockwise = ref(0);
 ```typescript
 // Define animation functions using animejs
 const heartbeatLogo = () => {
-    animate('.logo', { // Target elements with the class 'logo'
+    animate('.logo', { 
         scale: [
             { to: 1.25, ease: 'inOut(3)', duration: 200 },
-            { to: 1, ease: createSpring({ stiffness: 300 }) } // Spring effect
+            { to: 1, ease: createSpring({ stiffness: 300 }) } 
         ],
-        loop: true, // Repeat indefinitely
-        loopDelay: 250, // Delay between loops
+        loop: true,
+        loopDelay: 250, 
     });
 }
 
 const dragableLogo = () => {
-    createDraggable('.logo', { // Make elements with class 'logo' draggable
-        container: [0, 0, 0, 0], // Optional: constrain movement
-        releaseEase: createSpring({ stiffness: 200 }) // Spring back effect on release
+    createDraggable('.logo', { 
+        container: [0, 0, 0, 0], 
+        releaseEase: createSpring({ stiffness: 200 }) 
     });
 }
 
