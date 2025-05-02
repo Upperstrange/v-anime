@@ -1,12 +1,6 @@
-import { createScope, Scope } from 'animejs'; 
+import { createScope, Scope, type AnimationParams, animate, type DraggableParams, createDraggable, createSpring} from 'animejs'; 
 import { onMounted, onUnmounted, Ref } from 'vue';
 
-
-interface AnimeControlConfig {
-  methodName: string;
-
-  animationFunction: (...args: any[]) => any;
-}
 
 interface AnimeConfig {
   root: Ref<HTMLElement | null>;
@@ -14,11 +8,23 @@ interface AnimeConfig {
   animeFunctions: Array<() => void>;
 }
 
+interface AnimationControlConfig {
+  methodName: string;
+
+  animationFunction: (...args: any[]) => any;
+}
 
 interface AnimeControllerConfig {
   root: Ref<HTMLElement | null>; 
   scope: Ref<Scope | null>; 
-  animations: AnimeControlConfig[]; 
+  animations: AnimationControlConfig[]; 
+}
+
+interface AnimeMagicConfig {
+  root: Ref<HTMLElement | null>;
+  scope: Ref<ReturnType<typeof createScope> | null>;
+  bounce?: AnimationParams;
+  draggable?: DraggableParams;
 }
 
 
@@ -98,6 +104,42 @@ export const useAnime = ({ root, scope, animeFunctions }: AnimeConfig) => {
           console.error('Provided setup item is not a function:', setupFunc);
         }
       });
+    });
+  });
+
+  onUnmounted(() => {
+    if (scope.value) {
+      scope.value.revert();
+    }
+  });
+};
+
+
+export const useAnimeMagic = ({ root, scope, bounce, draggable}: AnimeMagicConfig) => {
+  onMounted(() => {
+    if (!root.value) {
+      console.error('Root element not available for useAnime');
+      return;
+    }
+
+    scope.value = createScope({ root: root.value }).add(() => {
+      if(!bounce){
+          bounce = {
+              scale: [
+                  { to: 1.25, ease: 'inOut(3)', duration: 200 },
+                  { to: 1, ease: createSpring({ stiffness: 300 }) }
+              ],
+              loop: true,
+              loopDelay: 250,
+          }
+      }
+      animate('.bounce', bounce);
+      const draggableElements = root.value?.querySelectorAll('.draggable');
+          if (draggableElements) {
+              draggableElements.forEach(el => {
+                  createDraggable(el as HTMLElement, draggable);
+              });
+          }
     });
   });
 
